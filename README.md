@@ -8,7 +8,7 @@ El resultado conserva la identidad visual y el flujo del diseño original, pero 
 
 [Ver cotizador en línea](https://photodangt-web.github.io/cotizador-inmobiliario/)
 
-El demo se publica automáticamente en GitHub Pages después de cada cambio enviado a la rama `main`.
+El demo se publica en la rama `gh-pages`, separada del código fuente de `main`.
 
 ## Funcionalidades
 
@@ -47,6 +47,7 @@ Vite mostrará la URL local, normalmente `http://localhost:5173`.
 ```bash
 npm run dev      # Servidor de desarrollo
 npm run build    # Compilación optimizada en dist/
+npm run deploy   # Publicación de dist/ en GitHub Pages
 npm run preview  # Vista previa de la compilación
 npm test         # Pruebas de la lógica financiera
 ```
@@ -81,7 +82,7 @@ cotizador-inmobiliario/
 
 ## Despliegue
 
-Ejecuta `npm run build` y publica el contenido de `dist/` en GitHub Pages, Netlify, Vercel o cualquier servidor de archivos estáticos. No se requiere backend en producción.
+Ejecuta `npm run deploy` para compilar y publicar el contenido de `dist/` en la rama `gh-pages`. No se requiere backend en producción.
 
 Todos los fondos se generan con CSS y el proyecto no carga imágenes ni recursos pertenecientes a una marca externa.
 
