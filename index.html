@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Cotizador hipotecario para una empresa inmobiliaria: compara enganche, banco y cuotas mensuales en dólares o quetzales."
+    />
+    <meta name="theme-color" content="#697368" />
+    <title>Cotizador | Empresa Inmobiliaria</title>
+  </head>
+  <body>
+    <main class="site-shell">
+      <section class="property-card" aria-labelledby="page-title">
+        <div class="brand" aria-label="Empresa Inmobiliaria">EMPRESA INMOBILIARIA</div>
+        <p class="eyebrow">Encuentra tu próximo hogar</p>
+        <h1 id="page-title">Cotizador de apartamentos</h1>
+        <p class="intro">
+          Selecciona el proyecto, ingresa el precio de referencia y calcula tu
+          financiamiento en segundos.
+        </p>
+
+        <div class="property-fields">
+          <label>
+            Proyecto
+            <select id="project">
+              <option value="Monad">Monad</option>
+              <option value="Ikonia">Ikonia</option>
+              <option value="Neo">Neo</option>
+            </select>
+          </label>
+          <label>
+            Tipo de apartamento
+            <select id="apartment-type">
+              <option value="1 habitación">1 habitación</option>
+              <option value="2 habitaciones" selected>2 habitaciones</option>
+              <option value="3 habitaciones">3 habitaciones</option>
+              <option value="4 habitaciones">4 habitaciones</option>
+            </select>
+          </label>
+          <label>
+            Precio en USD
+            <span class="price-input"><span>$</span><input id="property-price" type="number" min="1000" step="1000" value="150000" required /></span>
+          </label>
+        </div>
+
+        <button class="quote-trigger myBtns" id="open-quote" type="button">
+          Cotizar apartamento
+        </button>
+        <p class="disclaimer">Esta herramienta presenta valores estimados y no constituye una oferta bancaria.</p>
+      </section>
+    </main>
+
+    <div id="myModal" class="modal" aria-hidden="true">
+      <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="quote-title">
+        <button class="close" type="button" aria-label="Cerrar cotizador">&times;</button>
+        <div class="container">
+          <div class="quote-layout">
+            <section class="quote-options">
+              <p class="quote-project" id="quote-project">Monad</p>
+              <h2 id="quote-title">Personaliza tu cotización</h2>
+
+              <fieldset class="currency-fieldset">
+                <legend>Selecciona el tipo de moneda</legend>
+                <div class="monedas" id="monedas">
+                  <label><input type="radio" name="currency" value="USD" checked /> $ USD</label>
+                  <label><input type="radio" name="currency" value="GTQ" /> Q GTQ</label>
+                </div>
+              </fieldset>
+
+              <div class="form-group">
+                <h3>Precio de apartamento</h3>
+                <div class="precies">
+                  <span class="simboli" id="price-symbol">$</span>
+                  <strong id="display-price">150,000.00</strong>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="range-heading">
+                  <h3>Enganche</h3>
+                  <output id="down-payment-percent">5 %</output>
+                </div>
+                <input id="down-payment" class="my-range" type="range" value="5" step="5" min="5" max="30" />
+              </div>
+
+              <div class="form-group">
+                <label for="bank">Elige un banco <small>(varía interés)</small></label>
+                <select id="bank" class="banco"></select>
+              </div>
+
+              <button class="btn_calc" id="calculate" type="button">Calcular</button>
+            </section>
+
+            <section class="quote-results" aria-live="polite">
+              <div class="DivtAB" id="quote-pdf">
+                <div class="pdf-heading">
+                  <span>EMPRESA INMOBILIARIA</span>
+                  <strong>Resultados de cotización</strong>
+                  <small id="pdf-property">Monad · 2 habitaciones</small>
+                </div>
+                <dl class="summary-list">
+                  <div><dt>Precio:</dt><dd id="result-price">$ 150,000.00</dd></div>
+                  <div><dt>Monto de Enganche:</dt><dd id="result-down-payment">$ 7,500.00</dd></div>
+                  <div><dt>Monto a financiar:</dt><dd id="result-financed">$ 142,500.00</dd></div>
+                  <div><dt>% Tasa de Interés:</dt><dd id="result-rate">7.25 %</dd></div>
+                </dl>
+
+                <h3 class="installment-title">Cuotas</h3>
+                <div class="installment-table" role="table" aria-label="Cuotas mensuales estimadas">
+                  <div role="row" class="installment-years">
+                    <span role="columnheader">5 años</span><span role="columnheader">10 años</span><span role="columnheader">15 años</span>
+                    <span role="columnheader">20 años</span><span role="columnheader">25 años</span><span role="columnheader">30 años</span>
+                  </div>
+                  <div role="row" class="installment-values" id="installments">
+                    <span role="cell">---</span><span role="cell">---</span><span role="cell">---</span>
+                    <span role="cell">---</span><span role="cell">---</span><span role="cell">---</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="result-actions">
+                <button class="btn_calc exportarpdf" id="download-button" type="button" disabled>Exportar PDF</button>
+                <div class="aletteas">
+                  <p>*Precios incluyen impuestos y gastos legales.</p>
+                  <p>*Las cuotas bancarias son estimadas y no incluyen seguros.</p>
+                  <p>*Distribución y diseño del apartamento varían según disponibilidad.</p>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
