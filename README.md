@@ -6,9 +6,9 @@ El resultado conserva la identidad visual y el flujo del diseño original, pero 
 
 ## Demo
 
-[Ver cotizador en línea](https://photodangt-web.github.io/cotizador-inmobiliario/)
+[Ver cotizador en línea](https://cotizador-inmobiliario-omega.vercel.app/)
 
-El demo se publica en la rama `gh-pages`, separada del código fuente de `main`.
+El demo está publicado en Vercel y utiliza la compilación optimizada de producción.
 
 ## Funcionalidades
 
@@ -47,7 +47,6 @@ Vite mostrará la URL local, normalmente `http://localhost:5173`.
 ```bash
 npm run dev      # Servidor de desarrollo
 npm run build    # Compilación optimizada en dist/
-npm run deploy   # Publicación de dist/ en GitHub Pages
 npm run preview  # Vista previa de la compilación
 npm test         # Pruebas de la lógica financiera
 ```
@@ -82,7 +81,7 @@ cotizador-inmobiliario/
 
 ## Despliegue
 
-Ejecuta `npm run deploy` para compilar y publicar el contenido de `dist/` en la rama `gh-pages`. No se requiere backend en producción.
+El proyecto está preparado para Vercel. También puede publicarse ejecutando `npm run build` y sirviendo el contenido de `dist/` desde cualquier hosting estático. No se requiere backend en producción.
 
 Todos los fondos se generan con CSS y el proyecto no carga imágenes ni recursos pertenecientes a una marca externa.
 
